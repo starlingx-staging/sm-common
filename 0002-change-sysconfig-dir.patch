@@ -1,6 +1,6 @@
-From 15e994cb7d1eba2049836ff9d8d25e038ef62c1f Mon Sep 17 00:00:00 2001
+From 3ceb6d28955917253e0705c6e3927c5854fcfea7 Mon Sep 17 00:00:00 2001
 From: Mingyuan Qi <mingyuan.qi@intel.com>
-Date: Wed, 26 Sep 2018 19:17:47 +0800
+Date: Wed, 26 Sep 2018 21:42:56 +0800
 Subject: [PATCH 2/2] change sysconfig dir
 
 ---
