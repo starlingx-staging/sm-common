@@ -1,0 +1,4 @@
+VER=%{version}
+MAJOR=`echo $VER | awk -F . '{print $1}'`
+MINOR=`echo $VER | awk -F . '{print $2}'`
+%global _buildsubdir %{_builddir}/stx-ha-master/service-mgmt/sm-common-1.0.0
