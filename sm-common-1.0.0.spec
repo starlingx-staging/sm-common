@@ -89,19 +89,24 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1537969444
+export SOURCE_DATE_EPOCH=1538135205
 pushd service-mgmt/sm-common-1.0.0
 make  %{?_smp_mflags} VER=${VER} VER_MJR=$MAJOR
 popd
 
 %install
 ## install_prepend content
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.conf
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.service
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/sm-eru.service
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/Makefile
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/sm-eru.conf
 %global _unitdir '/usr/lib/systemd/system'
 VER=%{version}
 MAJOR=`echo $VER | awk -F . '{print $1}'`
 MINOR=`echo $VER | awk -F . '{print $2}'`
 ## install_prepend end
-export SOURCE_DATE_EPOCH=1537969444
+export SOURCE_DATE_EPOCH=1538135205
 rm -rf %{buildroot}
 pushd service-mgmt/sm-common-1.0.0
 make DEST_DIR=$RPM_BUILD_ROOT BIN_DIR=%{_bindir} UNIT_DIR=%{_unitdir} LIB_DIR=%{_libdir} INC_DIR=%{_includedir} VER=$VER VER_MJR=$MAJOR install_non_bb

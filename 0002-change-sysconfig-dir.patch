@@ -1,6 +1,6 @@
-From 3ceb6d28955917253e0705c6e3927c5854fcfea7 Mon Sep 17 00:00:00 2001
+From e06a34fb04a4ce932631ffdc7da1c5308b2118da Mon Sep 17 00:00:00 2001
 From: Mingyuan Qi <mingyuan.qi@intel.com>
-Date: Wed, 26 Sep 2018 21:42:56 +0800
+Date: Fri, 28 Sep 2018 19:45:40 +0800
 Subject: [PATCH 2/2] change sysconfig dir
 
 ---
@@ -12,7 +12,7 @@ Subject: [PATCH 2/2] change sysconfig dir
  5 files changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/service-mgmt/sm-common-1.0.0/scripts/Makefile b/service-mgmt/sm-common-1.0.0/scripts/Makefile
-index c142719..b13cd1c 100644
+index c142719..9284af2 100644
 --- a/service-mgmt/sm-common-1.0.0/scripts/Makefile
 +++ b/service-mgmt/sm-common-1.0.0/scripts/Makefile
 @@ -1,8 +1,8 @@
@@ -23,13 +23,13 @@ index c142719..b13cd1c 100644
 -	install sm-watchdog sm-eru $(DEST_DIR)/etc/init.d
 -	install -d $(DEST_DIR)/etc/pmon.d
 -	install *.conf $(DEST_DIR)/etc/pmon.d
-+	install -d $(DEST_DIR)/usr/local/etc/init.d
-+	install sm-watchdog sm-eru $(DEST_DIR)/usr/local/etc/init.d
-+	install -d $(DEST_DIR)/usr/local/etc/pmon.d
-+	install *.conf $(DEST_DIR)/usr/local/etc/pmon.d
++	install -d $(DEST_DIR)${sysconfdir}/init.d
++	install sm-watchdog sm-eru $(DEST_DIR)${sysconfdir}/init.d
++	install -d $(DEST_DIR)${sysconfdir}/pmon.d
++	install *.conf $(DEST_DIR)${sysconfdir}/pmon.d
  
 diff --git a/service-mgmt/sm-common-1.0.0/scripts/sm-eru.conf b/service-mgmt/sm-common-1.0.0/scripts/sm-eru.conf
-index 3daf316..42e6a48 100644
+index 3daf316..b86d9a9 100644
 --- a/service-mgmt/sm-common-1.0.0/scripts/sm-eru.conf
 +++ b/service-mgmt/sm-common-1.0.0/scripts/sm-eru.conf
 @@ -6,7 +6,7 @@
@@ -37,12 +37,12 @@ index 3daf316..42e6a48 100644
  process  = sm-eru
  pidfile  = /var/run/sm-eru.pid
 -script   = /etc/init.d/sm-eru
-+script   = /usr/local/etc/init.d/sm-eru
++script   = ${sysconfdir}/init.d/sm-eru
  style    = lsb            ; lsb
  severity = minor          ; minor, major, critical
  restarts = 3              ; restarts before error assertion
 diff --git a/service-mgmt/sm-common-1.0.0/scripts/sm-eru.service b/service-mgmt/sm-common-1.0.0/scripts/sm-eru.service
-index 0c35ffe..b3fe032 100644
+index 0c35ffe..96e954f 100644
 --- a/service-mgmt/sm-common-1.0.0/scripts/sm-eru.service
 +++ b/service-mgmt/sm-common-1.0.0/scripts/sm-eru.service
 @@ -7,8 +7,8 @@ Before=pmon.service
@@ -51,13 +51,13 @@ index 0c35ffe..b3fe032 100644
  User=root
 -ExecStart=/etc/init.d/sm-eru start
 -ExecStop=/etc/init.d/sm-eru stop
-+ExecStart=/usr/local/etc/init.d/sm-eru start
-+ExecStop=/usr/local/etc/init.d/sm-eru stop
++ExecStart=${sysconfdir}/init.d/sm-eru start
++ExecStop=${sysconfdir}/init.d/sm-eru stop
  PIDFile=/var/run/sm-eru.pid
  
  [Install]
 diff --git a/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.conf b/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.conf
-index 8ae37ad..28a66c3 100644
+index 8ae37ad..d4ecb77 100644
 --- a/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.conf
 +++ b/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.conf
 @@ -6,7 +6,7 @@
@@ -65,12 +65,12 @@ index 8ae37ad..28a66c3 100644
  process  = sm-watchdog
  pidfile  = /var/run/sm-watchdog.pid
 -script   = /etc/init.d/sm-watchdog
-+script   = /usr/local/etc/init.d/sm-watchdog
++script   = ${sysconfdir}/init.d/sm-watchdog
  style    = lsb            ; lsb
  severity = major          ; minor, major, critical
  restarts = 3              ; restarts before error assertion
 diff --git a/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.service b/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.service
-index 5fd147a..edc583a 100644
+index 5fd147a..9cebed3 100644
 --- a/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.service
 +++ b/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.service
 @@ -7,8 +7,8 @@ Before=sm.service pmon.service
@@ -79,8 +79,8 @@ index 5fd147a..edc583a 100644
  User=root
 -ExecStart=/etc/init.d/sm-watchdog start
 -ExecStop=/etc/init.d/sm-watchdog stop
-+ExecStart=/usr/local/etc/init.d/sm-watchdog start
-+ExecStop=/usr/local/etc/init.d/sm-watchdog stop
++ExecStart=${sysconfdir}/init.d/sm-watchdog start
++ExecStop=${sysconfdir}/init.d/sm-watchdog stop
  PIDFile=/var/run/sm-watchdog.pid
  
  [Install]

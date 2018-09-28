@@ -1,6 +1,6 @@
-From c8531d7512960d94e19809ef7cddf6a7e58db38c Mon Sep 17 00:00:00 2001
+From db266a1602558013de056ccbbf4dd2e79a4645e4 Mon Sep 17 00:00:00 2001
 From: Mingyuan Qi <mingyuan.qi@intel.com>
-Date: Wed, 26 Sep 2018 21:42:56 +0800
+Date: Fri, 28 Sep 2018 19:45:40 +0800
 Subject: [PATCH 1/2] disable warning as error
 
 ---
