@@ -1,0 +1,6 @@
+glib-dev
+sqlite-autoconf-dev
+gcc
+util-linux
+systemd
+systemd-devel

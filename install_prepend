@@ -1,0 +1,9 @@
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.conf
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/sm-watchdog.service
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/sm-eru.service
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/Makefile
+sed -i -e 's/${sysconfdir}/\/usr\/local\/etc/g' %{_builddir}/stx-ha-3ee0e6855958e9d702314f1577e619f657e79ffd/service-mgmt/sm-common-1.0.0/scripts/sm-eru.conf
+%global _unitdir '/usr/lib/systemd/system'
+VER=%{version}
+MAJOR=`echo $VER | awk -F . '{print $1}'`
+MINOR=`echo $VER | awk -F . '{print $2}'`
